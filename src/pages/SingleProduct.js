@@ -69,7 +69,7 @@ function SingleProduct() {
 
   return (
     <Wrapper>
-      <PageHero title={name} product />
+      <PageHero title={name} products />
       <div className="section section-center page">
         <Link to="/products" className="btn">
           back to products

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import DatePicker from "react-datepicker-styled-components";
+
+import "react-modern-calendar-datepicker/lib/DatePicker.css";
+import DatePicker from "react-modern-calendar-datepicker";
 
 import { useCartContext } from "../context/cart_context";
 // import { useUserContext } from "../context/user_context";
@@ -12,7 +14,7 @@ import { FaStoreAlt } from "react-icons/fa";
 
 function CartCalender() {
   const { total_amount, shipping_fee } = useCartContext();
-
+  const [selectedDay, setSelectedDay] = useState(null);
   return (
     <Wrapper>
       <article>
@@ -36,8 +38,18 @@ function CartCalender() {
                 <div className="checkoutMethodName">Store Pickup</div>
               </div>
             </div>
-            <div className="checkoutMethodsContainer">
-              <div></div>
+            <div className="checkoutMethodsContainer datepicker">
+              <div>
+                <small>Please choose your date for delivery here:</small>
+              </div>
+              <div>
+                <DatePicker
+                  value={selectedDay}
+                  onChange={setSelectedDay}
+                  inputPlaceholder="Select a date"
+                  shouldHighlightWeekends
+                />
+              </div>
             </div>
           </div>
           <div className="text">
@@ -67,6 +79,8 @@ const Wrapper = styled.section`
     border-radius: var(--radius);
     padding: 1.5rem 3rem;
     background-color: #f4f4f4;
+
+    width: 350px;
   }
 
   .container {
@@ -118,6 +132,11 @@ const Wrapper = styled.section`
         margin-right: 0.5em;
       }
     }
+
+    .datepicker {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   .active {
@@ -144,6 +163,7 @@ const Wrapper = styled.section`
     text-transform: Uppercase;
     color: #fff;
     cursor: pointer;
+    text-align: center;
   }
 
   .checkout {
@@ -159,6 +179,10 @@ const Wrapper = styled.section`
     background-color: #5f6062;
 
     margin-top: 0.625rem;
+  }
+
+  @media (max-width: 741px) {
+    margin-left: 0;
   }
 `;
 
