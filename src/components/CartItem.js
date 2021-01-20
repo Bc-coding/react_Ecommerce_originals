@@ -6,6 +6,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import AmountButtons from "./AmountButtons";
 
 function CartItem({ amount, color, id, image, name, price }) {
+  console.log(image);
   const { removeItem, toggleAmount } = useCartContext();
   const increase = () => {};
   const decrease = () => {};
@@ -57,8 +58,6 @@ const Wrapper = styled.article`
     align-items: center;
     text-align: left;
     gap: 1rem;
-
-    border: 1px solid red;
   }
 
   img {
