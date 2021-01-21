@@ -1,4 +1,9 @@
-import { ADD_TO_CART, REMOVE_CART_ITEM, CLEAR_CART } from "../actions";
+import {
+  ADD_TO_CART,
+  REMOVE_CART_ITEM,
+  CLEAR_CART,
+  TOGGLE_CART_ITEM_AMOUNT,
+} from "../actions";
 
 const cart_reducer = (state, action) => {
   // ************ ADD TO CART
@@ -53,6 +58,48 @@ const cart_reducer = (state, action) => {
     return {
       ...state,
       cart: [],
+    };
+  }
+
+  // ************ TOGGLE AMOUNT
+  if (action.type === TOGGLE_CART_ITEM_AMOUNT) {
+    const { id, value } = action.payload;
+    const tempCart = state.cart.map((item) => {
+      // interate the cart to check if the id matches
+      if (item.id === id) {
+        // for matched id, we need to check if the value is "inc" or "dec", then we run the function accordingly
+        if (value === "inc") {
+          // increase the amount
+          let newAmount = item.amount + 1;
+          // set the newAmount to max if it is bigger
+          if (newAmount > item.max) {
+            newAmount = item.max;
+          }
+          // return the item with the newAmount
+          return {
+            ...item,
+            amount: newAmount,
+          };
+        }
+        if (value === "dec") {
+          // decrease the amount
+          let newAmount = item.amount - 1;
+          if (newAmount < 1) {
+            newAmount = 1;
+          }
+          return {
+            ...item,
+            amount: newAmount,
+          };
+        }
+      } else {
+        return item;
+      }
+    });
+
+    return {
+      ...state,
+      cart: tempCart,
     };
   }
 

@@ -34,19 +34,29 @@ const CartContext = React.createContext();
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // Add to cart
+  // ADD TO CART
   //  *** we need to the data passing from the AddToCart component, which are id, color, price
   const addToCart = (id, color, amount, product) => {
     dispatch({ type: ADD_TO_CART, payload: { id, color, amount, product } });
   };
 
-  //   remove item from the cart
+  //   REMOVE ITEM from the cart
   const removeItem = (id) => {
     dispatch({ type: REMOVE_CART_ITEM, payload: id });
   };
-  //   toggle amount
-  const toggleAmount = (id, value) => {};
-  //   clear cart
+
+  //   TOGGLE AMOUNT
+  const toggleAmount = (id, value) => {
+    dispatch({
+      type: TOGGLE_CART_ITEM_AMOUNT,
+      payload: {
+        id,
+        value,
+      },
+    });
+  };
+
+  //   CLEAR CART
   const clearCart = () => {
     dispatch({ type: CLEAR_CART });
   };
