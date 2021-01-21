@@ -1,4 +1,4 @@
-import { ADD_TO_CART } from "../actions";
+import { ADD_TO_CART, REMOVE_CART_ITEM, CLEAR_CART } from "../actions";
 
 const cart_reducer = (state, action) => {
   // ************ ADD TO CART
@@ -23,12 +23,9 @@ const cart_reducer = (state, action) => {
         }
       });
 
-      //console.log(product.fields.images[0].fields.file.url);
-
       return { ...state, cart: tempCart };
     } else {
       // if it is not in the cart, then we need to create an item in the cart
-
       const newItem = {
         id: id + color,
         name: product.fields.name,
@@ -40,6 +37,23 @@ const cart_reducer = (state, action) => {
       };
       return { ...state, cart: [...state.cart, newItem] };
     }
+  }
+
+  // ************ REMOVE ITEM
+  if (action.type === REMOVE_CART_ITEM) {
+    const tempCart = state.cart.filter((item) => item.id !== action.payload);
+    return {
+      ...state,
+      cart: tempCart,
+    };
+  }
+
+  // ************ CLEAR CART
+  if (action.type === CLEAR_CART) {
+    return {
+      ...state,
+      cart: [],
+    };
   }
 
   throw new Error(`No Matching "${action.type}" - action type`);

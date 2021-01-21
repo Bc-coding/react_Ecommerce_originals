@@ -41,11 +41,15 @@ export const CartProvider = ({ children }) => {
   };
 
   //   remove item from the cart
-  const removeItem = (id) => {};
+  const removeItem = (id) => {
+    dispatch({ type: REMOVE_CART_ITEM, payload: id });
+  };
   //   toggle amount
   const toggleAmount = (id, value) => {};
   //   clear cart
-  const clearCart = () => {};
+  const clearCart = () => {
+    dispatch({ type: CLEAR_CART });
+  };
 
   //   update localStorage everytime there is a change to cart
   useEffect(() => {
@@ -53,7 +57,9 @@ export const CartProvider = ({ children }) => {
   }, [state.cart]);
 
   return (
-    <CartContext.Provider value={{ ...state, addToCart }}>
+    <CartContext.Provider
+      value={{ ...state, addToCart, removeItem, toggleAmount, clearCart }}
+    >
       {children}
     </CartContext.Provider>
   );
