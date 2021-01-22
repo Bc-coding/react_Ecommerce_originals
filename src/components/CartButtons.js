@@ -5,15 +5,17 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { useProductsContext } from "../context/products_context";
+import { useCartContext } from "../context/cart_context";
 
 function CartButtons() {
   const { closeSidebar } = useProductsContext();
+  const { total_items } = useCartContext();
   return (
     <Wrapper className="cart__btn__wrapper">
       <Link to="/cart" className="cart__btn" onClick={closeSidebar}>
         <span className="cart__container">
           <FaShoppingCart />
-          <span className="cart__value">12</span>
+          <span className="cart__value">{total_items}</span>
         </span>
       </Link>
       <button type="button" className="auth__btn">
