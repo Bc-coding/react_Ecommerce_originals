@@ -49,7 +49,6 @@ const Wrapper = styled.section`
   h2 {
     font-family: var(--ff-Bethham);
     text-align: center;
-
     margin-top: 1rem;
   }
 
@@ -64,13 +63,11 @@ const Wrapper = styled.section`
     margin-bottom: 1rem;
   }
 
-    img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-    }
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
   }
-
 `;
 
 export default NewInStore;

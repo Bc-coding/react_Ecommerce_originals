@@ -22,7 +22,8 @@ function Product({ fields, sys }) {
   return (
     <Wrapper>
       <div className="container">
-        <img src={imgSrc} alt={name} />
+        <img src={imgSrc} alt={name} className="image" />
+
         <div className="top-left-text">{category}</div>
         <Link to={`/products`} className="link">
           <FaSearch />
@@ -36,8 +37,6 @@ const Wrapper = styled.article`
   .container {
     position: relative;
     background: var(--clr-black);
-
-    // for text overlay
     text-align: center;
     color: var(--clr-grey-11);
   }
@@ -76,7 +75,7 @@ const Wrapper = styled.article`
     height: 2.5rem;
     border-radius: 50%;
 
-    opacity: 0; // INVISIBLE with 0
+    opacity: 0;
     cursor: pointer;
     svg {
       font-size: 1.25rem;
@@ -84,8 +83,8 @@ const Wrapper = styled.article`
     }
   }
 
-  .container: hover .link {
-    opacity: 1; // VISIBLE WHEN HOVER
+  .container:hover .link {
+    opacity: 1;
   }
 `;
 

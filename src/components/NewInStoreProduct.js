@@ -25,7 +25,7 @@ function Product({ fields, sys }) {
     <Wrapper>
       <div className="container">
         <Link to={`/products/${id}`} className="link">
-          <img src={imgSrc} alt={name} />
+          <img src={imgSrc} alt={name} className="image" />
         </Link>
       </div>
       <footer>
@@ -42,6 +42,10 @@ const Wrapper = styled.article`
 
   .link {
     cursor: pointer;
+  }
+  .image {
+    height: 250px;
+    width: 250px;
   }
 
   img {

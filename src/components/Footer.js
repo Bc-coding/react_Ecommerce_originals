@@ -8,10 +8,7 @@ function Footer() {
         &copy; {new Date().getFullYear()} <span>Originals Furniture</span>
       </h5>
       <h5>All rights reserved</h5>
-      <small>
-        The products images are used for demo purpose. The copyrights of the
-        images are owned by Originals Singapore.{" "}
-      </small>
+      <small>The product images are used for demo purpose for this site.</small>
     </Wrapper>
   );
 }

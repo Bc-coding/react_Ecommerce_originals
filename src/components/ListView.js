@@ -14,7 +14,11 @@ function ListView({ products }) {
           return (
             <article key={id}>
               <Link to={`/products/${id}`}>
-                <img src={images[0].fields.file.url} alt={name} />
+                <img
+                  src={images[0].fields.file.url}
+                  alt={name}
+                  className="image"
+                />
               </Link>
 
               <div>
@@ -41,6 +45,11 @@ const Wrapper = styled.section`
     display: grid;
     grid-template-columns: 50% 50%;
     column-gap: 10px;
+  }
+
+  .image {
+    width: 130px;
+    height: 130px;
   }
 
   img {

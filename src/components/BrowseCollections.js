@@ -65,19 +65,29 @@ const Wrapper = styled.section`
     img {
       display: block;
       max-width: 100%;
-      height: auto;
+      height: 400px;
     }
   }
 
   @media (min-width: 766px) {
     .featured {
       grid-template-columns: 1fr 1fr;
+
+      img {
+        max-width: 100%;
+        height: 400px;
+      }
     }
   }
 
   @media (min-width: 1199px) {
     .featured {
       grid-template-columns: 1fr 1fr 1fr 1fr;
+
+      img {
+        max-width: 100%;
+        height: 250px;
+      }
     }
   }
 `;
