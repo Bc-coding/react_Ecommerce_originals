@@ -5,7 +5,7 @@ import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import DatePicker from "react-modern-calendar-datepicker";
 
 import { useCartContext } from "../context/cart_context";
-// import { useUserContext } from "../context/user_context";
+import { useUserContext } from "../context/user_context";
 import { formatPrice } from "../utils/helpers";
 import { Link } from "react-router-dom";
 
@@ -15,6 +15,7 @@ import { FaStoreAlt } from "react-icons/fa";
 function CartCalender() {
   const { total_amount, shipping_fee } = useCartContext();
   const [selectedDay, setSelectedDay] = useState(null);
+  const { myUser, loginWithRedirect } = useUserContext();
   return (
     <Wrapper>
       <article>
@@ -53,9 +54,19 @@ function CartCalender() {
             </div>
           </div>
           <div className="text">
-            <button type="submit" className="checkout cart-btn">
-              Checkout
-            </button>
+            {myUser ? (
+              <Link to="/checkout" className="checkout cart-btn">
+                Checkout
+              </Link>
+            ) : (
+              <button
+                type="button"
+                className="checkout cart-btn"
+                onClick={loginWithRedirect}
+              >
+                login
+              </button>
+            )}
           </div>
           <div>
             <Link to="/products" className="continue cart-btn">
