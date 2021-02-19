@@ -12,10 +12,10 @@ const cart_reducer = (state, action) => {
     const { id, color, amount, product } = action.payload;
 
     // checking if the item is already in the cart
-    const tempItem = state.cart.find((i) => i.id === id + color);
+    const tempItem = state.cart.find(i => i.id === id + color);
     if (tempItem) {
       //if the item is already in the cart, then we need to map over the cart to pass in the amount and check again the stock
-      const tempCart = state.cart.map((cartItem) => {
+      const tempCart = state.cart.map(cartItem => {
         if (cartItem.id === id + color) {
           // if the id matches then we just need to increase the amount
           let newAmount = cartItem.amount + amount;
@@ -47,7 +47,7 @@ const cart_reducer = (state, action) => {
 
   // ************ REMOVE ITEM
   if (action.type === REMOVE_CART_ITEM) {
-    const tempCart = state.cart.filter((item) => item.id !== action.payload);
+    const tempCart = state.cart.filter(item => item.id !== action.payload);
     return {
       ...state,
       cart: tempCart,
@@ -65,7 +65,7 @@ const cart_reducer = (state, action) => {
   // ************ TOGGLE AMOUNT
   if (action.type === TOGGLE_CART_ITEM_AMOUNT) {
     const { id, value } = action.payload;
-    const tempCart = state.cart.map((item) => {
+    const tempCart = state.cart.map(item => {
       // interate the cart to check if the id matches
       if (item.id === id) {
         // for matched id, we need to check if the value is "inc" or "dec", then we run the function accordingly
@@ -96,6 +96,7 @@ const cart_reducer = (state, action) => {
       } else {
         return item;
       }
+      return item;
     });
 
     return {

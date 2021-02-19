@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useCartContext } from "../context/cart_context";
 import { Link } from "react-router-dom";
-import { CartContext, PageHero, Contact, CartContent } from "../components";
+import { PageHero, Contact, CartContent } from "../components";
 
 function Cart() {
   const { cart } = useCartContext();

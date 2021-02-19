@@ -55,14 +55,13 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: SET_LISTVIEW });
   };
 
-  const updateSort = (e) => {
-    const name = e.target.name;
+  const updateSort = e => {
     const value = e.target.value;
 
     dispatch({ type: UPDATE_SORT, payload: value });
   };
 
-  const updateFilters = (e) => {
+  const updateFilters = e => {
     const name = e.target.name;
     let value = e.target.value;
 

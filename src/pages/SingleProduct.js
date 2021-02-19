@@ -10,7 +10,6 @@ import {
   AddToCart,
   ProductImages,
   PageHero,
-  Likes,
   Stars,
 } from "../components";
 
@@ -52,15 +51,12 @@ function SingleProduct() {
   const { fields, sys } = product || {};
 
   const {
-    category,
-    colorCodes,
     company,
     description: desc,
     images,
     name,
     newInStore,
     price,
-    shipping,
     stars,
     stock,
   } = fields || {};

@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 import { FaInstagram } from "react-icons/fa";
 
@@ -8,11 +7,18 @@ function socialMedia() {
   return (
     <Wrapper>
       <div className="section section-center">
-        <a target="_blank" className="link">
+        <a
+          target="_blank"
+          rel="noreferrer"
+          className="link"
+          href="https://www.instagram.com/"
+        >
           <FaInstagram className="svg" />
         </a>
         <h3>
-          <a target="_blank">@Originals</a>
+          <a target="_blank" rel="noreferrer" href="https://www.instagram.com/">
+            @Originals
+          </a>
         </h3>
         <div>
           <p>Share and connect with us</p>

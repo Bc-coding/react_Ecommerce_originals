@@ -17,7 +17,7 @@ function ProductImages({
 
   return (
     <Wrapper>
-      <img src={url} alt="main image" className="main" />
+      <img src={url} alt="main" className="main" />
       <div className="gallery">
         {images.map((image, index) => {
           return (
