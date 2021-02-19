@@ -1,19 +1,16 @@
 import React from "react";
-
 import { Route, Redirect } from "react-router-dom";
-import { useUserContext } from "../context/user_context";
 import { withAuthenticationRequired } from "@auth0/auth0-react";
-
-import About from "./About";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const PrivateRoute = ({ children, ...rest }) => {
-  const { myUser } = useUserContext();
+  const { user } = useAuth0();
 
   return (
     <Route
       {...rest}
       render={() => {
-        return myUser ? children : <Redirect to="/"></Redirect>;
+        return user ? children : <Redirect to="/"></Redirect>;
       }}
     >
       {children}
@@ -23,5 +20,9 @@ const PrivateRoute = ({ children, ...rest }) => {
 
 export default withAuthenticationRequired(PrivateRoute, {
   // Show a message while the user waits to be redirected to the login page.
-  onRedirecting: () => <div>Redirecting you to the login page...</div>,
+  onRedirecting: () => (
+    <div>
+      <p>Redirecting you to the login page...</p>
+    </div>
+  ),
 });
