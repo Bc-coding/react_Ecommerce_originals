@@ -21,6 +21,7 @@ import CartColumns from "./CartColumns";
 import CartItem from "./CartItem";
 import CartTotals from "./CartTotals";
 import CartCalendar from "./CartCalender";
+import StripeCheckout from "./StripeCheckout";
 
 export {
   Navbar,
@@ -46,4 +47,5 @@ export {
   CartItem,
   CartCalendar,
   CartTotals,
+  StripeCheckout,
 };
